@@ -24,3 +24,7 @@ Neuron: `sigmoid(input0 * weight0 + input1 * weight1 + ... + bias) -> output`
   Neuron03: `sigmoid(input0 * weight03_0 + input1 * weight03_1 + bias03) -> output03`  
   Neuron10: `sigmoid(output00 * weight10_0 + output01 * weight10_1 + output02 * weight10_2 + output03 * weight10_3 + bias10) -> output10`  
   Graph: x = input0, y = input1, plot = output10
+
+## 01_learningTokyoLandShape  
+- makeData
+  `pip install Pillow`
