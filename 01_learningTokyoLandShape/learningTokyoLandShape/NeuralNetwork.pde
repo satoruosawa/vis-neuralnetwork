@@ -10,6 +10,8 @@ class NeuralNetwork {
   private float learningRate = 0.3;
 
   NeuralNetwork() {
+    bias0 = 1.0;
+    bias1 = 1.0;
     neuron10 = new Neuron(new float[]{0.3, -2.2, -1.4});
     neuron11 = new Neuron(new float[]{-0.4, -0.1, 0.2});
     neuron20 = new Neuron(new float[]{-0.2, 0.5, -0.2});
