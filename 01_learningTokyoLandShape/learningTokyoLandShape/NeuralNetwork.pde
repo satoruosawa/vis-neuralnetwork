@@ -27,6 +27,18 @@ class NeuralNetwork {
     ellipse(input0, input1, size, size);
   }
 
+  void setValueToUi() {
+    CP5.getController("P10_WEIGHT0").setValue(neuron10.weight(0));
+    CP5.getController("P10_WEIGHT1").setValue(neuron10.weight(1));
+    CP5.getController("P10_WEIGHT2").setValue(neuron10.weight(2));
+    CP5.getController("P11_WEIGHT0").setValue(neuron11.weight(0));
+    CP5.getController("P11_WEIGHT1").setValue(neuron11.weight(1));
+    CP5.getController("P11_WEIGHT2").setValue(neuron11.weight(2));
+    CP5.getController("P20_WEIGHT0").setValue(neuron20.weight(0));
+    CP5.getController("P20_WEIGHT1").setValue(neuron20.weight(1));
+    CP5.getController("P20_WEIGHT2").setValue(neuron20.weight(2));
+  }
+
   void learn(float input0, float input1, float correctValue) {
     float p10 = neuron10.run(new float[]{input0, input1, bias0});
     float p11 = neuron11.run(new float[]{input0, input1, bias0});
