@@ -2,12 +2,12 @@ color COLOR_TRUE = #CCFF90;
 color COLOR_FALSE = #FF8A80;
 
 class NeuralNetwork {
-  float bias0;
-  float bias1;
-  Neuron neuron10;
-  Neuron neuron11;
-  Neuron neuron12;
-  Neuron neuron20;
+  private float bias0;
+  private float bias1;
+  private Neuron neuron10;
+  private Neuron neuron11;
+  private Neuron neuron12;
+  private Neuron neuron20;
 
   NeuralNetwork() {
     bias0 = 1.0;
