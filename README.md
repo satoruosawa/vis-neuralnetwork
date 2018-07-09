@@ -9,14 +9,14 @@ Neuron: `sigmoid(input0 * weight0 + input1 * weight1 + ... + bias * weightN) -> 
   Neuron20: `sigmoid(output10 * weight20_0 + output11 * weight20_1 + bias1 * weight20_2) -> output20`  
   Graph: x = input0, y = input1, plot = output20  
 
-- withoutLearning31  
+- withoutLearning231  
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/t7YKc6kC8H8/0.jpg)](http://www.youtube.com/watch?v=t7YKc6kC8H8)  
   Neuron10: `sigmoid(input0 * weight10_0 + input1 * weight10_1 + bias0 * weight10_2) -> output10`  
   Neuron11: `sigmoid(input0 * weight11_0 + input1 * weight11_1 + bias0 * weight11_2) -> output11`  
   Neuron12: `sigmoid(input0 * weight12_0 + input1 * weight12_1 + bias0 * weight12_2) -> output12`  
   Neuron20: `sigmoid(output10 * weight20_0 + output11 * weight20_1 + output12 * weight20_2 + bias1 * weight20_3) -> output20`  
   Graph: x = input0, y = input1, plot = output20
-- withoutLearning41  
+- withoutLearning241  
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/9CijsnMtwJY/0.jpg)](http://www.youtube.com/watch?v=9CijsnMtwJY)  
   Neuron10: `sigmoid(input0 * weight10_0 + input1 * weight10_1 + bias0 * weight10_2) -> output10`  
   Neuron11: `sigmoid(input0 * weight11_0 + input1 * weight11_1 + bias0 * weight11_2) -> output11`  
