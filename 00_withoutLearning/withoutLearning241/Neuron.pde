@@ -1,16 +1,14 @@
 class Neuron {
   private float weight[];
-  private float bias;
-  Neuron(float[] weight, float bias) {
+  Neuron(float[] weight) {
     this.weight = weight;
-    this.bias = bias;
   }
 
   float run(float[] x) {
     if (x.length != weight.length) {
       println("warn!! x length != weight length");
     }
-    float reducedX = bias;
+    float reducedX = 0;
     for (int i = 0; i < weight.length; i++) {
       reducedX += weight[i] * x[i];
     }
@@ -22,7 +20,5 @@ class Neuron {
   }
 
   void weight(int index, float weight) { this.weight[index] = weight; }
-  void bias(float bias) { this.bias = bias; }
   float weight(int index) { return weight[index]; }
-  float bias() { return bias; }
 }

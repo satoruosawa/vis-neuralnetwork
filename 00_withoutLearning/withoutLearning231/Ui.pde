@@ -100,6 +100,6 @@ void drawAxis() {
   textFont(HIRAGINO20);
   textSize(20);
   fill(100);
-  text("input0", width / 2 - 30, -5);
+  text("input0", width / 2 - 80, -5);
   text("input1", 5, -height / 2 + 30);
 }
