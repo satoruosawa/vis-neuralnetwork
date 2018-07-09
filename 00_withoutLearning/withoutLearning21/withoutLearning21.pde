@@ -1,5 +1,7 @@
 PFont HIRAGINO10;
 PFont HIRAGINO20;
+float BIAS_IN;
+float BIAS_0;
 Neuron NEURON_0_0;
 Neuron NEURON_0_1;
 Neuron NEURON_1_0;
@@ -8,9 +10,6 @@ float MIN = -10;
 float SCALE = 1;
 color COLOR_TRUE = #CCFF90;
 color COLOR_FALSE = #FF8A80;
-String MOUSE_X_ASSIGN = "P00 undefined";
-String MOUSE_Y_ASSIGN = "P00 undefined";
-int MOUSE_MODE = 0;
 
 void setup() {
   size(1000, 1000, P2D);
@@ -20,9 +19,11 @@ void setup() {
   HIRAGINO10 = loadFont("HiraginoSans-W0-10.vlw");
   HIRAGINO20 = loadFont("HiraginoSans-W0-20.vlw");
 
-  NEURON_0_0 = new Neuron(new float[]{0.3, -2.2}, -1.4);
-  NEURON_0_1 = new Neuron(new float[]{-0.4, -0.1}, 0.2);
-  NEURON_1_0 = new Neuron(new float[]{-0.2, 0.5}, -0.2);
+  BIAS_IN = 1.0;
+  BIAS_0 = 1.0;
+  NEURON_0_0 = new Neuron(new float[]{0.3, -2.2, -1.4});
+  NEURON_0_1 = new Neuron(new float[]{-0.4, -0.1, 0.2});
+  NEURON_1_0 = new Neuron(new float[]{-0.2, 0.5, -0.2});
 
   setupUi();
 }
@@ -46,9 +47,9 @@ void draw() {
 }
 
 void drawNeuron(float[] x, float size) {
-  float p00 = NEURON_0_0.run(x);
-  float p01 = NEURON_0_1.run(x);
-  float p10 = NEURON_1_0.run(new float[]{p00, p01});
+  float p00 = NEURON_0_0.run(new float[]{x[0], x[1], BIAS_IN});
+  float p01 = NEURON_0_1.run(new float[]{x[0], x[1], BIAS_IN});
+  float p10 = NEURON_1_0.run(new float[]{p00, p01, BIAS_0});
   if (p10 > 0.5) {
     fill(COLOR_TRUE);
   } else {
@@ -60,13 +61,13 @@ void drawNeuron(float[] x, float size) {
 void updateParameters() {
   NEURON_0_0.weight(0, CP5.getController("P00_WEIGHT0").getValue());
   NEURON_0_0.weight(1, CP5.getController("P00_WEIGHT1").getValue());
-  NEURON_0_0.bias(CP5.getController("P00_BIAS").getValue());
+  NEURON_0_0.weight(2, CP5.getController("P00_WEIGHT2").getValue());
   NEURON_0_1.weight(0, CP5.getController("P01_WEIGHT0").getValue());
   NEURON_0_1.weight(1, CP5.getController("P01_WEIGHT1").getValue());
-  NEURON_0_1.bias(CP5.getController("P01_BIAS").getValue());
+  NEURON_0_1.weight(2, CP5.getController("P01_WEIGHT2").getValue());
   NEURON_1_0.weight(0, CP5.getController("P10_WEIGHT0").getValue());
   NEURON_1_0.weight(1, CP5.getController("P10_WEIGHT1").getValue());
-  NEURON_1_0.bias(CP5.getController("P10_BIAS").getValue());
+  NEURON_1_0.weight(2, CP5.getController("P10_WEIGHT2").getValue());
 }
 
 void keyPressed() {

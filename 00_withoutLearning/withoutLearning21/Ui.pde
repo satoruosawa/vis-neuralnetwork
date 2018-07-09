@@ -23,8 +23,8 @@ void setupUi() {
     .setSize(sliderWidth, sliderHeight)
     .setRange(rangeMin, rangeMax);
   sliderPositionY += 20;
-  CP5.addSlider("P00_BIAS")
-    .setLabel("P00 bias")
+  CP5.addSlider("P00_WEIGHT2")
+    .setLabel("P00 weight2")
     .setPosition(10, sliderPositionY)
     .setSize(sliderWidth, sliderHeight)
     .setRange(rangeMin, rangeMax);
@@ -41,8 +41,8 @@ void setupUi() {
     .setSize(sliderWidth, sliderHeight)
     .setRange(rangeMin, rangeMax);
   sliderPositionY += 20;
-  CP5.addSlider("P01_BIAS")
-    .setLabel("P01 bias")
+  CP5.addSlider("P01_WEIGHT2")
+    .setLabel("P01 weight2")
     .setPosition(10, sliderPositionY)
     .setSize(sliderWidth, sliderHeight)
     .setRange(rangeMin, rangeMax);
@@ -59,8 +59,8 @@ void setupUi() {
     .setSize(sliderWidth, sliderHeight)
     .setRange(rangeMin, rangeMax);
   sliderPositionY += 20;
-  CP5.addSlider("P10_BIAS")
-    .setLabel("P10 bias")
+  CP5.addSlider("P10_WEIGHT2")
+    .setLabel("P10 weight2")
     .setPosition(10, sliderPositionY)
     .setSize(sliderWidth, sliderHeight)
     .setRange(rangeMin, rangeMax);
@@ -72,13 +72,13 @@ void setupUi() {
 void setValue() {
   CP5.getController("P00_WEIGHT0").setValue(NEURON_0_0.weight(0));
   CP5.getController("P00_WEIGHT1").setValue(NEURON_0_0.weight(1));
-  CP5.getController("P00_BIAS").setValue(NEURON_0_0.bias());
+  CP5.getController("P00_WEIGHT2").setValue(NEURON_0_0.weight(2));
   CP5.getController("P01_WEIGHT0").setValue(NEURON_0_1.weight(0));
   CP5.getController("P01_WEIGHT1").setValue(NEURON_0_1.weight(1));
-  CP5.getController("P01_BIAS").setValue(NEURON_0_1.bias());
+  CP5.getController("P01_WEIGHT2").setValue(NEURON_0_1.weight(2));
   CP5.getController("P10_WEIGHT0").setValue(NEURON_1_0.weight(0));
   CP5.getController("P10_WEIGHT1").setValue(NEURON_1_0.weight(1));
-  CP5.getController("P10_BIAS").setValue(NEURON_1_0.bias());
+  CP5.getController("P10_WEIGHT2").setValue(NEURON_1_0.weight(2));
 }
 
 void drawAxis() {
