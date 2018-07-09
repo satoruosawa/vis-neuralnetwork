@@ -1,29 +1,29 @@
 # vis-neuralnetwork-processing
 
 ## 00_withoutLearning
-Neuron: `sigmoid(input0 * weight0 + input1 * weight1 + ... + bias) -> output`
-- withoutLearning21  
+Neuron: `sigmoid(input0 * weight0 + input1 * weight1 + ... + bias * weightN) -> output`
+- withoutLearning221  
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/FSRDTXZ6OjA/0.jpg)](http://www.youtube.com/watch?v=FSRDTXZ6OjA)  
-  Neuron00: `sigmoid(input0 * weight00_0 + input1 * weight00_1 + bias00) -> output00`  
-  Neuron01: `sigmoid(input0 * weight01_0 + input1 * weight01_1 + bias01) -> output01`  
-  Neuron10: `sigmoid(output00 * weight10_0 + output01 * weight10_1 + bias10) -> output10`  
-  Graph: x = input0, y = input1, plot = output10  
+  Neuron10: `sigmoid(input0 * weight10_0 + input1 * weight10_1 + bias0 * weight10_2) -> output10`  
+  Neuron11: `sigmoid(input0 * weight11_0 + input1 * weight11_1 + bias0 * weight11_2) -> output11`  
+  Neuron20: `sigmoid(output10 * weight20_0 + output11 * weight20_1 + bias1 * weight20_2) -> output20`  
+  Graph: x = input0, y = input1, plot = output20  
 
 - withoutLearning31  
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/t7YKc6kC8H8/0.jpg)](http://www.youtube.com/watch?v=t7YKc6kC8H8)  
-  Neuron00: `sigmoid(input0 * weight00_0 + input1 * weight00_1 + bias00) -> output00`  
-  Neuron01: `sigmoid(input0 * weight01_0 + input1 * weight01_1 + bias01) -> output01`  
-  Neuron02: `sigmoid(input0 * weight02_0 + input1 * weight02_1 + bias02) -> output02`  
-  Neuron10: `sigmoid(output00 * weight10_0 + output01 * weight10_1 + output02 * weight10_2 + bias10) -> output10`  
-  Graph: x = input0, y = input1, plot = output10
+  Neuron10: `sigmoid(input0 * weight10_0 + input1 * weight10_1 + bias0 * weight10_2) -> output10`  
+  Neuron11: `sigmoid(input0 * weight11_0 + input1 * weight11_1 + bias0 * weight11_2) -> output11`  
+  Neuron12: `sigmoid(input0 * weight12_0 + input1 * weight12_1 + bias0 * weight12_2) -> output12`  
+  Neuron20: `sigmoid(output10 * weight20_0 + output11 * weight20_1 + output12 * weight20_2 + bias1 * weight20_3) -> output20`  
+  Graph: x = input0, y = input1, plot = output20
 - withoutLearning41  
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/9CijsnMtwJY/0.jpg)](http://www.youtube.com/watch?v=9CijsnMtwJY)  
-  Neuron00: `sigmoid(input0 * weight00_0 + input1 * weight00_1 + bias00) -> output00`  
-  Neuron01: `sigmoid(input0 * weight01_0 + input1 * weight01_1 + bias01) -> output01`  
-  Neuron02: `sigmoid(input0 * weight02_0 + input1 * weight02_1 + bias02) -> output02`  
-  Neuron03: `sigmoid(input0 * weight03_0 + input1 * weight03_1 + bias03) -> output03`  
-  Neuron10: `sigmoid(output00 * weight10_0 + output01 * weight10_1 + output02 * weight10_2 + output03 * weight10_3 + bias10) -> output10`  
-  Graph: x = input0, y = input1, plot = output10
+  Neuron10: `sigmoid(input0 * weight10_0 + input1 * weight10_1 + bias0 * weight10_2) -> output10`  
+  Neuron11: `sigmoid(input0 * weight11_0 + input1 * weight11_1 + bias0 * weight11_2) -> output11`  
+  Neuron12: `sigmoid(input0 * weight12_0 + input1 * weight12_1 + bias0 * weight12_2) -> output12`  
+  Neuron13: `sigmoid(input0 * weight13_0 + input1 * weight13_1 + bias0 * weight13_2) -> output13`  
+  Neuron20: `sigmoid(output10 * weight20_0 + output11 * weight20_1 + output12 * weight20_2 + output13 * weight20_3 + bias1 * weight20_4) -> output20`  
+  Graph: x = input0, y = input1, plot = output20
 
 ## 01_learningTokyoLandShape  
 - makeData  
