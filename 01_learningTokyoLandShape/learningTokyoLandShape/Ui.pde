@@ -4,8 +4,8 @@ ControlP5 CP5;
 
 int sliderWidth = 100;
 int sliderHeight = 15;
-int rangeMin = -10;
-int rangeMax = 10;
+int rangeMin = -100;
+int rangeMax = 100;
 
 void setupUi() {
   int sliderPositionY = 10;
@@ -47,6 +47,42 @@ void setupUi() {
     .setSize(sliderWidth, sliderHeight)
     .setRange(rangeMin, rangeMax);
   sliderPositionY += 20;
+  CP5.addSlider("P12_WEIGHT0")
+    .setLabel("P12 weight0")
+    .setPosition(10, sliderPositionY)
+    .setSize(sliderWidth, sliderHeight)
+    .setRange(rangeMin, rangeMax);
+  sliderPositionY += 20;
+  CP5.addSlider("P12_WEIGHT1")
+    .setLabel("P12 weight1")
+    .setPosition(10, sliderPositionY)
+    .setSize(sliderWidth, sliderHeight)
+    .setRange(rangeMin, rangeMax);
+  sliderPositionY += 20;
+  CP5.addSlider("P12_WEIGHT2")
+    .setLabel("P12 weight2")
+    .setPosition(10, sliderPositionY)
+    .setSize(sliderWidth, sliderHeight)
+    .setRange(rangeMin, rangeMax);
+  sliderPositionY += 20;
+  CP5.addSlider("P13_WEIGHT0")
+    .setLabel("P13 weight0")
+    .setPosition(10, sliderPositionY)
+    .setSize(sliderWidth, sliderHeight)
+    .setRange(rangeMin, rangeMax);
+  sliderPositionY += 20;
+  CP5.addSlider("P13_WEIGHT1")
+    .setLabel("P13 weight1")
+    .setPosition(10, sliderPositionY)
+    .setSize(sliderWidth, sliderHeight)
+    .setRange(rangeMin, rangeMax);
+  sliderPositionY += 20;
+  CP5.addSlider("P13_WEIGHT2")
+    .setLabel("P13 weight2")
+    .setPosition(10, sliderPositionY)
+    .setSize(sliderWidth, sliderHeight)
+    .setRange(rangeMin, rangeMax);
+  sliderPositionY += 20;
   CP5.addSlider("P20_WEIGHT0")
     .setLabel("P20 weight0")
     .setPosition(10, sliderPositionY)
@@ -61,6 +97,18 @@ void setupUi() {
   sliderPositionY += 20;
   CP5.addSlider("P20_WEIGHT2")
     .setLabel("P20 weight2")
+    .setPosition(10, sliderPositionY)
+    .setSize(sliderWidth, sliderHeight)
+    .setRange(rangeMin, rangeMax);
+  sliderPositionY += 20;
+  CP5.addSlider("P20_WEIGHT3")
+    .setLabel("P20 weight3")
+    .setPosition(10, sliderPositionY)
+    .setSize(sliderWidth, sliderHeight)
+    .setRange(rangeMin, rangeMax);
+  sliderPositionY += 20;
+  CP5.addSlider("P20_WEIGHT4")
+    .setLabel("P20 weight4")
     .setPosition(10, sliderPositionY)
     .setSize(sliderWidth, sliderHeight)
     .setRange(rangeMin, rangeMax);

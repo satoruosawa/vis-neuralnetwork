@@ -37,11 +37,13 @@ void drawTrainingData() {
 }
 
 void update() {
-  int trainingIndex = int(random(TRAINING_DATA.size()));
-  TrainingDatum td = TRAINING_DATA.get(trainingIndex);
-  float correctData = 1.0;
-  if (!td.onLand) correctData = 0.0;
-  NEURAL_NETWORK.learn(td.x, td.y, correctData);
+  for (int i = 0; i < 1000; i++) {
+    int trainingIndex = int(random(TRAINING_DATA.size()));
+    TrainingDatum td = TRAINING_DATA.get(trainingIndex);
+    float correctData = 1.0;
+    if (!td.onLand) correctData = 0.0;
+    NEURAL_NETWORK.learn(td.x, td.y, correctData);
+  }
   NEURAL_NETWORK.setValueToUi();
 }
 
