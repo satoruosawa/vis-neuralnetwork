@@ -1,4 +1,7 @@
 ArrayList<TrainingDatum> TRAINING_DATA = new ArrayList<TrainingDatum>();
+NeuralNetwork NEURAL_NETWORK;
+float MAX = 1000;
+float MIN = 0;
 
 void setup() {
   size(1000, 1000, P2D);
@@ -14,7 +17,8 @@ void setup() {
       TRAINING_DATA.add(new TrainingDatum(data[0], data[1], flag));
     }
   }
-  drawTrainingData();
+  // drawTrainingData();
+  NEURAL_NETWORK = new NeuralNetwork();
 }
 
 void drawTrainingData() {
@@ -28,8 +32,29 @@ void drawTrainingData() {
 }
 
 void update() {
+  int trainingIndex = int(random(TRAINING_DATA.size()));
+  TrainingDatum td = TRAINING_DATA.get(trainingIndex);
+  float correctData = 1.0;
+  if (!td.onLand) correctData = 0.0;
+  NEURAL_NETWORK.learn(td.x, td.y, correctData);
 }
 
 void draw() {
   update();
+  for (int i = 0; i < 1000; i++) {
+    float input0 = random(MIN, MAX);
+    float input1 = random(MIN, MAX);
+    noStroke();
+    NEURAL_NETWORK.drawNeurons(input0, input1, 4);
+  }
+}
+
+void keyPressed() {
+  switch (key) {
+    case ' ':
+      background(255);
+      break;
+    default:
+      break;
+  }
 }
