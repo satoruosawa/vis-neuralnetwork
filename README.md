@@ -1,4 +1,4 @@
-# vis-neuralnetwork
+# vis-neuralnetwork-processing
 
 ## 00_withoutLearning
 Neuron: `sigmoid(input0 * weight0 + input1 * weight1 + ... + bias) -> output`
@@ -26,5 +26,8 @@ Neuron: `sigmoid(input0 * weight0 + input1 * weight1 + ... + bias) -> output`
   Graph: x = input0, y = input1, plot = output10
 
 ## 01_learningTokyoLandShape  
-- makeData
-  `pip install Pillow`
+- makeData  
+  install a following library
+  `pip install Pillow`  
+  use python3  
+  `python makeData.py`
