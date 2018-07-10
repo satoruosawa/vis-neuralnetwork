@@ -5,6 +5,7 @@ NeuralNetwork NEURAL_NETWORK;
 float MAX = 1;
 float MIN = -1;
 float SCALE = 1;
+PImage shapeImage;
 
 void setup() {
   size(1000, 1000, P2D);
@@ -13,7 +14,7 @@ void setup() {
   smooth();
   HIRAGINO10 = loadFont("HiraginoSans-W0-10.vlw");
   HIRAGINO20 = loadFont("HiraginoSans-W0-20.vlw");
-
+  shapeImage = loadImage("./tokyoLandShape.png");
   String[] datalines = loadStrings("../makeData/build/tokyoLandShape.csv");
   if (datalines != null) {
     for (int i = 0; i < datalines.length; i ++) {
@@ -61,6 +62,8 @@ void draw() {
       NEURAL_NETWORK.drawNeurons(input0, input1, 4);
     }
   } popMatrix();
+  tint(#0000FF, 3);
+  image(shapeImage, 0, 0);
   drawAxis();
 }
 
@@ -68,7 +71,6 @@ void keyPressed() {
   switch (key) {
     case ' ':
       background(255);
-      drawTrainingData();
       break;
     default:
       break;

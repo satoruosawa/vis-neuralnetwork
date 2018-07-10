@@ -1,6 +1,3 @@
-color COLOR_TRUE = #CCFF90;
-color COLOR_FALSE = #FF8A80;
-
 class NeuralNetwork {
   private float bias0;
   private float bias1;
@@ -27,11 +24,7 @@ class NeuralNetwork {
     float p12 = neuron12.run(new float[]{input0, input1, bias0});
     float p13 = neuron13.run(new float[]{input0, input1, bias0});
     float p20 = neuron20.run(new float[]{p10, p11, p12, p13, bias1});
-    if (p20 > 0.5) {
-      fill(COLOR_TRUE);
-    } else {
-      fill(COLOR_FALSE);
-    }
+    fill((1 - p20) * 255);
     ellipse(input0 * SCALE, input1 * SCALE, size, size);
   }
 
