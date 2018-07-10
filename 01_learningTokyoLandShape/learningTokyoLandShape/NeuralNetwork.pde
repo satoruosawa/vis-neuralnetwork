@@ -1,16 +1,32 @@
 class NeuralNetwork {
   private float bias0;
   private float bias1;
+  private Neuron[] neuron1;
   private Neuron neuron10;
   private Neuron neuron11;
   private Neuron neuron12;
   private Neuron neuron13;
   private Neuron neuron20;
+  private Neuron neuron2;
   private float learningRate = 0.3;
+  private int numMiddleLayer = 2;
 
-  NeuralNetwork() {
+  NeuralNetwork(int numMiddleLayer) {
     bias0 = 1.0;
     bias1 = 1.0;
+    this.numMiddleLayer = numMiddleLayer;
+    neuron1 = new Neuron[numMiddleLayer];
+    float[] neuron2Weignts = new float[numMiddleLayer + 1];
+    for (int i = 0; i < numMiddleLayer; i++) {
+      neuron1[i] = new Neuron(new float[]{
+        random(-1.0, 1.0), random(-1.0, 1.0), random(-1.0, 1.0)
+      });
+      neuron2Weignts[i] = random(-1.0, 1.0);
+    }
+    neuron2Weignts[numMiddleLayer] = random(-1.0, 1.0);
+    neuron2 = new Neuron(neuron2Weignts);
+
+
     neuron10 = new Neuron(new float[]{0.3, -2.2, -1.4});
     neuron11 = new Neuron(new float[]{-0.4, -0.1, 0.2});
     neuron12 = new Neuron(new float[]{0.4, -0.1, 0.2});
@@ -19,13 +35,23 @@ class NeuralNetwork {
   }
 
   void drawNeurons(float input0, float input1, int size) {
+    float[] outputsN1 = new float[numMiddleLayer + 1];
+    for (int i = 0; i < numMiddleLayer; i++) {
+      outputsN1[i] = neuron1[i].run(new float[]{input0, input1, bias0});
+    }
+    outputsN1[numMiddleLayer] = bias1;
+    float outputsN2 = neuron2.run(outputsN1);
+    fill((1 - outputsN2) * 255);
+    ellipse(input0 * SCALE, input1 * SCALE, size, size);
+
+
     float p10 = neuron10.run(new float[]{input0, input1, bias0});
     float p11 = neuron11.run(new float[]{input0, input1, bias0});
     float p12 = neuron12.run(new float[]{input0, input1, bias0});
     float p13 = neuron13.run(new float[]{input0, input1, bias0});
     float p20 = neuron20.run(new float[]{p10, p11, p12, p13, bias1});
-    fill((1 - p20) * 255);
-    ellipse(input0 * SCALE, input1 * SCALE, size, size);
+    // fill((1 - p20) * 255);
+    // ellipse(input0 * SCALE, input1 * SCALE, size, size);
   }
 
   void setValueToUi() {
@@ -49,6 +75,29 @@ class NeuralNetwork {
   }
 
   void learn(float input0, float input1, float correctValue) {
+    float[] outputsN1 = new float[numMiddleLayer + 1];
+    for (int i = 0; i < numMiddleLayer; i++) {
+      outputsN1[i] = neuron1[i].run(new float[]{input0, input1, bias0});
+    }
+    outputsN1[numMiddleLayer] = bias1;
+    float outputN2 = neuron2.run(outputsN1);
+
+    // 2 -> 1
+    float deltaWeight2 = (correctValue - outputN2) * outputN2 * (1.0 - outputN2);
+    float[] oldWeight2 = neuron2.weight();
+    for (int i = 0; i < numMiddleLayer; i++) {
+      neuron2.addWeight(i, outputsN1[i] * deltaWeight2 * learningRate);
+    }
+    neuron2.addWeight(numMiddleLayer, bias1 * deltaWeight2 * learningRate);
+
+    // 1 -> 0
+    for (int i = 0; i < numMiddleLayer; i++) {
+      float deltaWeight1 = deltaWeight2 * oldWeight2[i] * outputsN1[i] * (1.0 - outputsN1[i]);
+      neuron1[i].addWeight(0, input0 * deltaWeight1 * learningRate);
+      neuron1[i].addWeight(1, input1 * deltaWeight1 * learningRate);
+      neuron1[i].addWeight(2, bias0 * deltaWeight1 * learningRate);
+    }
+
     float p10 = neuron10.run(new float[]{input0, input1, bias0});
     float p11 = neuron11.run(new float[]{input0, input1, bias0});
     float p12 = neuron12.run(new float[]{input0, input1, bias0});

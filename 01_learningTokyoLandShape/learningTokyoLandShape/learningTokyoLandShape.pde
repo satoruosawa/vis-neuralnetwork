@@ -25,7 +25,7 @@ void setup() {
     }
   }
   // drawTrainingData();
-  NEURAL_NETWORK = new NeuralNetwork();
+  NEURAL_NETWORK = new NeuralNetwork(4);
   setupUi();
 }
 
