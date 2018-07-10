@@ -32,7 +32,7 @@ class NeuralNetwork {
     } else {
       fill(COLOR_FALSE);
     }
-    ellipse(input0, input1, size, size);
+    ellipse(input0 * SCALE, input1 * SCALE, size, size);
   }
 
   void setValueToUi() {

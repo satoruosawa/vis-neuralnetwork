@@ -2,11 +2,13 @@ PFont HIRAGINO10;
 PFont HIRAGINO20;
 ArrayList<TrainingDatum> TRAINING_DATA = new ArrayList<TrainingDatum>();
 NeuralNetwork NEURAL_NETWORK;
-float MAX = 1000;
-float MIN = 0;
+float MAX = 1;
+float MIN = -1;
+float SCALE = 1;
 
 void setup() {
   size(1000, 1000, P2D);
+  SCALE = width / (MAX - MIN);
   background(255);
   smooth();
   HIRAGINO10 = loadFont("HiraginoSans-W0-10.vlw");
@@ -33,7 +35,7 @@ void drawTrainingData() {
     if (!td.onLand) continue;
     rect(td.x, td.y, 1, 1);
   }
-  noLoop();
+  // noLoop();
 }
 
 void update() {
@@ -42,19 +44,23 @@ void update() {
     TrainingDatum td = TRAINING_DATA.get(trainingIndex);
     float correctData = 1.0;
     if (!td.onLand) correctData = 0.0;
-    NEURAL_NETWORK.learn(td.x, td.y, correctData);
+    float[] positionNormal = translateFromPixelScaleToNormal(td.x, td.y);
+    NEURAL_NETWORK.learn(positionNormal[0], positionNormal[1], correctData);
   }
   NEURAL_NETWORK.setValueToUi();
 }
 
 void draw() {
   update();
-  for (int i = 0; i < 1000; i++) {
-    float input0 = random(MIN, MAX);
-    float input1 = random(MIN, MAX);
+  pushMatrix(); {
+    translate(-MIN * SCALE, MAX * SCALE);
     noStroke();
-    NEURAL_NETWORK.drawNeurons(input0, input1, 4);
-  }
+    for (int i = 0; i < 1000; i++) {
+      float input0 = random(MIN, MAX);
+      float input1 = random(MIN, MAX);
+      NEURAL_NETWORK.drawNeurons(input0, input1, 4);
+    }
+  } popMatrix();
   drawAxis();
 }
 
@@ -62,6 +68,7 @@ void keyPressed() {
   switch (key) {
     case ' ':
       background(255);
+      drawTrainingData();
       break;
     default:
       break;
