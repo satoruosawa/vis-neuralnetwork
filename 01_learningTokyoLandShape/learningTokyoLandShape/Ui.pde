@@ -11,109 +11,35 @@ void setupUi() {
   int sliderPositionY = 10;
   CP5 = new ControlP5(this);
   CP5.setColorCaptionLabel(color(100));
-  CP5.addSlider("P10_WEIGHT0")
-    .setLabel("P10 weight0")
-    .setPosition(10, sliderPositionY)
-    .setSize(sliderWidth, sliderHeight)
-    .setRange(rangeMin, rangeMax);
-  sliderPositionY += 20;
-  CP5.addSlider("P10_WEIGHT1")
-    .setLabel("P10 weight1")
-    .setPosition(10, sliderPositionY)
-    .setSize(sliderWidth, sliderHeight)
-    .setRange(rangeMin, rangeMax);
-  sliderPositionY += 20;
-  CP5.addSlider("P10_WEIGHT2")
-    .setLabel("P10 weight2")
-    .setPosition(10, sliderPositionY)
-    .setSize(sliderWidth, sliderHeight)
-    .setRange(rangeMin, rangeMax);
-  sliderPositionY += 20;
-  CP5.addSlider("P11_WEIGHT0")
-    .setLabel("P11 weight0")
-    .setPosition(10, sliderPositionY)
-    .setSize(sliderWidth, sliderHeight)
-    .setRange(rangeMin, rangeMax);
-  sliderPositionY += 20;
-  CP5.addSlider("P11_WEIGHT1")
-    .setLabel("P11 weight1")
-    .setPosition(10, sliderPositionY)
-    .setSize(sliderWidth, sliderHeight)
-    .setRange(rangeMin, rangeMax);
-  sliderPositionY += 20;
-  CP5.addSlider("P11_WEIGHT2")
-    .setLabel("P11 weight2")
-    .setPosition(10, sliderPositionY)
-    .setSize(sliderWidth, sliderHeight)
-    .setRange(rangeMin, rangeMax);
-  sliderPositionY += 20;
-  CP5.addSlider("P12_WEIGHT0")
-    .setLabel("P12 weight0")
-    .setPosition(10, sliderPositionY)
-    .setSize(sliderWidth, sliderHeight)
-    .setRange(rangeMin, rangeMax);
-  sliderPositionY += 20;
-  CP5.addSlider("P12_WEIGHT1")
-    .setLabel("P12 weight1")
-    .setPosition(10, sliderPositionY)
-    .setSize(sliderWidth, sliderHeight)
-    .setRange(rangeMin, rangeMax);
-  sliderPositionY += 20;
-  CP5.addSlider("P12_WEIGHT2")
-    .setLabel("P12 weight2")
-    .setPosition(10, sliderPositionY)
-    .setSize(sliderWidth, sliderHeight)
-    .setRange(rangeMin, rangeMax);
-  sliderPositionY += 20;
-  CP5.addSlider("P13_WEIGHT0")
-    .setLabel("P13 weight0")
-    .setPosition(10, sliderPositionY)
-    .setSize(sliderWidth, sliderHeight)
-    .setRange(rangeMin, rangeMax);
-  sliderPositionY += 20;
-  CP5.addSlider("P13_WEIGHT1")
-    .setLabel("P13 weight1")
-    .setPosition(10, sliderPositionY)
-    .setSize(sliderWidth, sliderHeight)
-    .setRange(rangeMin, rangeMax);
-  sliderPositionY += 20;
-  CP5.addSlider("P13_WEIGHT2")
-    .setLabel("P13 weight2")
-    .setPosition(10, sliderPositionY)
-    .setSize(sliderWidth, sliderHeight)
-    .setRange(rangeMin, rangeMax);
-  sliderPositionY += 20;
-  CP5.addSlider("P20_WEIGHT0")
-    .setLabel("P20 weight0")
-    .setPosition(10, sliderPositionY)
-    .setSize(sliderWidth, sliderHeight)
-    .setRange(rangeMin, rangeMax);
-  sliderPositionY += 20;
-  CP5.addSlider("P20_WEIGHT1")
-    .setLabel("P20 weight1")
-    .setPosition(10, sliderPositionY)
-    .setSize(sliderWidth, sliderHeight)
-    .setRange(rangeMin, rangeMax);
-  sliderPositionY += 20;
-  CP5.addSlider("P20_WEIGHT2")
-    .setLabel("P20 weight2")
-    .setPosition(10, sliderPositionY)
-    .setSize(sliderWidth, sliderHeight)
-    .setRange(rangeMin, rangeMax);
-  sliderPositionY += 20;
-  CP5.addSlider("P20_WEIGHT3")
-    .setLabel("P20 weight3")
-    .setPosition(10, sliderPositionY)
-    .setSize(sliderWidth, sliderHeight)
-    .setRange(rangeMin, rangeMax);
-  sliderPositionY += 20;
-  CP5.addSlider("P20_WEIGHT4")
-    .setLabel("P20 weight4")
-    .setPosition(10, sliderPositionY)
-    .setSize(sliderWidth, sliderHeight)
-    .setRange(rangeMin, rangeMax);
-  sliderPositionY += 20;
+  for (int i = 0; i < NUM_MIDDLE_LAYER; i++) {
+    CP5.addSlider("P1" + str(i) + "_WEIGHT0")
+      .setLabel("P1" + str(i) + " weight0")
+      .setPosition(10, sliderPositionY)
+      .setSize(sliderWidth, sliderHeight)
+      .setRange(rangeMin, rangeMax);
+    sliderPositionY += 20;
+    CP5.addSlider("P1" + str(i) + "_WEIGHT1")
+      .setLabel("P1" + str(i) + " weight1")
+      .setPosition(10, sliderPositionY)
+      .setSize(sliderWidth, sliderHeight)
+      .setRange(rangeMin, rangeMax);
+    sliderPositionY += 20;
+    CP5.addSlider("P1" + str(i) + "_WEIGHT2")
+      .setLabel("P1" + str(i) + " weight2")
+      .setPosition(10, sliderPositionY)
+      .setSize(sliderWidth, sliderHeight)
+      .setRange(rangeMin, rangeMax);
+    sliderPositionY += 20;
+  }
 
+  for (int i = 0; i < NUM_MIDDLE_LAYER + 1; i++) {
+    CP5.addSlider("P2_WEIGHT" + str(i))
+      .setLabel("P2 weight" + str(i))
+      .setPosition(10, sliderPositionY)
+      .setSize(sliderWidth, sliderHeight)
+      .setRange(rangeMin, rangeMax);
+    sliderPositionY += 20;
+  }
   NEURAL_NETWORK.setValueToUi();
 }
 

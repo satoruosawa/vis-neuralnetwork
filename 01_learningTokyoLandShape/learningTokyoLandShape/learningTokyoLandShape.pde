@@ -5,6 +5,7 @@ NeuralNetwork NEURAL_NETWORK;
 float MAX = 1;
 float MIN = -1;
 float SCALE = 1;
+int NUM_MIDDLE_LAYER = 200;
 PImage shapeImage;
 
 void setup() {
@@ -25,7 +26,7 @@ void setup() {
     }
   }
   // drawTrainingData();
-  NEURAL_NETWORK = new NeuralNetwork(4);
+  NEURAL_NETWORK = new NeuralNetwork();
   setupUi();
 }
 
@@ -40,7 +41,7 @@ void drawTrainingData() {
 }
 
 void update() {
-  for (int i = 0; i < 1000; i++) {
+  for (int i = 0; i < 10000; i++) {
     int trainingIndex = int(random(TRAINING_DATA.size()));
     TrainingDatum td = TRAINING_DATA.get(trainingIndex);
     float correctData = 1.0;
@@ -59,7 +60,7 @@ void draw() {
     for (int i = 0; i < 1000; i++) {
       float input0 = random(MIN, MAX);
       float input1 = random(MIN, MAX);
-      NEURAL_NETWORK.drawNeurons(input0, input1, 4);
+      NEURAL_NETWORK.drawNeurons(input0, input1, 1);
     }
   } popMatrix();
   tint(#0000FF, 3);
