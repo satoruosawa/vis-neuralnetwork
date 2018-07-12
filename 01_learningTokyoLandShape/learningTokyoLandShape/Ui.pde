@@ -8,7 +8,7 @@ int rangeMin = -100;
 int rangeMax = 100;
 
 void setupUi() {
-  int sliderPositionY = 10;
+  int sliderPositionY = 30;
   CP5 = new ControlP5(this);
   CP5.setColorCaptionLabel(color(100));
   for (int i = 0; i < NUM_MIDDLE_LAYER; i++) {
@@ -52,4 +52,21 @@ void drawAxis() {
   fill(100);
   text("input0", width - 80, height / 2 - 5);
   text("input1", width / 2 + 5, 30);
+}
+
+void drawLearningCount() {
+  fill(255);
+  noStroke();
+  rect(10, 5, 100, 20);
+  textFont(HIRAGINO10);
+  textSize(10);
+  fill(0);
+  text(LEARNING_COUNT, 10, 20);
+}
+
+void drawLearning() {
+  textFont(HIRAGINO20);
+  textSize(20);
+  fill(0);
+  text("LEARNING", width / 2 - 50, height / 2 - 5);
 }

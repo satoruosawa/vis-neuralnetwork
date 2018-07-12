@@ -6,6 +6,8 @@ float MAX = 1;
 float MIN = -1;
 float SCALE = 1;
 int NUM_MIDDLE_LAYER = 200;
+boolean IS_LEARNING = false;
+int LEARNING_COUNT = 0;
 PImage shapeImage;
 
 void setup() {
@@ -41,6 +43,7 @@ void drawTrainingData() {
 }
 
 void update() {
+  if (!IS_LEARNING) { return; }
   for (int i = 0; i < 10000; i++) {
     int trainingIndex = int(random(TRAINING_DATA.size()));
     TrainingDatum td = TRAINING_DATA.get(trainingIndex);
@@ -48,12 +51,16 @@ void update() {
     if (!td.onLand) correctData = 0.0;
     float[] positionNormal = translateFromPixelScaleToNormal(td.x, td.y);
     NEURAL_NETWORK.learn(positionNormal[0], positionNormal[1], correctData);
+    LEARNING_COUNT++;
   }
+  drawLearning();
   NEURAL_NETWORK.setValueToUi();
 }
 
 void draw() {
   update();
+  drawLearningCount();
+  if (IS_LEARNING) { return; }
   pushMatrix(); {
     translate(-MIN * SCALE, MAX * SCALE);
     noStroke();
@@ -72,6 +79,16 @@ void keyPressed() {
   switch (key) {
     case ' ':
       background(255);
+      break;
+    case 'l':
+      IS_LEARNING = !IS_LEARNING;
+      if (IS_LEARNING) {
+        fill(0, 100);
+        noStroke();
+        rect(0, 0, width, height);
+      } else {
+        background(255);
+      }
       break;
     default:
       break;
