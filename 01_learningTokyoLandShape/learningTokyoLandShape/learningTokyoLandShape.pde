@@ -5,7 +5,7 @@ NeuralNetwork NEURAL_NETWORK;
 float MAX = 1;
 float MIN = -1;
 float SCALE = 1;
-int NUM_MIDDLE_LAYER = 200;
+int NUM_MIDDLE_LAYER = 2;
 boolean IS_LEARNING = false;
 int LEARNING_COUNT = 0;
 PImage shapeImage;
@@ -53,13 +53,12 @@ void update() {
     NEURAL_NETWORK.learn(positionNormal[0], positionNormal[1], correctData);
     LEARNING_COUNT++;
   }
-  drawLearning();
   NEURAL_NETWORK.setValueToUi();
+  drawLearningCount();
 }
 
 void draw() {
   update();
-  drawLearningCount();
   if (IS_LEARNING) { return; }
   pushMatrix(); {
     translate(-MIN * SCALE, MAX * SCALE);
@@ -72,6 +71,7 @@ void draw() {
   } popMatrix();
   tint(#0000FF, 3);
   image(shapeImage, 0, 0);
+  drawLearningCount();
   drawAxis();
 }
 
@@ -83,9 +83,12 @@ void keyPressed() {
     case 'l':
       IS_LEARNING = !IS_LEARNING;
       if (IS_LEARNING) {
-        fill(0, 100);
         noStroke();
+        fill(255);
+        rect(width / 2 - 60, height / 2 - 21, 120, 42);
+        fill(0, 100);
         rect(0, 0, width, height);
+        drawLearning();
       } else {
         background(255);
       }

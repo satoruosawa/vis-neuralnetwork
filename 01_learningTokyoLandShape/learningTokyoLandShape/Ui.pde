@@ -2,10 +2,10 @@ import controlP5.*;
 
 ControlP5 CP5;
 
-int sliderWidth = 100;
+int sliderWidth = 50;
 int sliderHeight = 15;
-int rangeMin = -100;
-int rangeMax = 100;
+int rangeMin = -50;
+int rangeMax = 50;
 
 void setupUi() {
   int sliderPositionY = 30;
@@ -44,6 +44,10 @@ void setupUi() {
 }
 
 void drawAxis() {
+  fill(255);
+  noStroke();
+  rect(width - 85, height / 2 - 21, 70, 20);
+  rect(width / 2 + 1, 14, 67, 21);
   stroke(150);
   line(0, height / 2, width, height / 2);
   line(width / 2, 0, width / 2, height);
@@ -57,7 +61,7 @@ void drawAxis() {
 void drawLearningCount() {
   fill(255);
   noStroke();
-  rect(10, 5, 100, 20);
+  rect(10, 5, 50, 20);
   textFont(HIRAGINO10);
   textSize(10);
   fill(0);
@@ -68,5 +72,5 @@ void drawLearning() {
   textFont(HIRAGINO20);
   textSize(20);
   fill(0);
-  text("LEARNING", width / 2 - 50, height / 2 - 5);
+  text("LEARNING", width / 2 - 50, height / 2 + 8);
 }
