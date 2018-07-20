@@ -27,7 +27,19 @@ Neuron: `sigmoid(input0 * weight0 + input1 * weight1 + ... + bias * weightN) -> 
 
 ## 01_learningTokyoLandShape  
 - makeData  
-  install a following library
-  `pip install Pillow`  
-  use python3  
-  `python makeData.py`
+  Install a following library
+  `$ pip install Pillow`  
+  Use python3  
+  `$ python makeData.py`
+
+## 02_learningLandShape  
+- makeData  
+  Install a following library
+  `$ pip install Pillow`  
+  Put any jpg image data named 'landShape.jpg' in the makeData directory. the size should be 1000 * 1000 px.
+  The land shape should be black. (condition: red is less than 128)
+  Use python3  
+  `$ python makeData.py`
+- Start
+  Put a line shape reference image named 'landShape.png' in the learningLandShape directory. the size should be 1000 * 1000 px.
+  play learningLandShape.pde
