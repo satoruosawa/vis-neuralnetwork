@@ -5,7 +5,6 @@ import random
 
 img = Image.open('tokyoLandShape.jpg')
 width, height = img.size
-img2 = Image.new('RGB', (width, height))
 
 flag_array = []
 
@@ -15,7 +14,7 @@ flag_array = []
 
 for y in range(height):
   for x in range(width):
-    if (img.getpixel((x, y))[0] == 0):
+    if (img.getpixel((x, y))[0] < 128):
       flag_array.append([x, y, 1]) # is Tokyo
     else:
       flag_array.append([x, y, 0]) # is not Tokyo
