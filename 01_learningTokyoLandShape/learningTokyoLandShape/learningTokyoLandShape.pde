@@ -1,5 +1,6 @@
-PFont HIRAGINO10;
-PFont HIRAGINO20;
+PFont HIRAGINO_W0_10;
+PFont HIRAGINO_W0_20;
+PFont HIRAGINO_W2_10;
 ArrayList<TrainingDatum> TRAINING_DATA = new ArrayList<TrainingDatum>();
 NeuralNetwork NEURAL_NETWORK;
 float MAX = 1;
@@ -15,8 +16,9 @@ void setup() {
   SCALE = width / (MAX - MIN);
   background(255);
   smooth();
-  HIRAGINO10 = loadFont("HiraginoSans-W0-10.vlw");
-  HIRAGINO20 = loadFont("HiraginoSans-W0-20.vlw");
+  HIRAGINO_W0_10 = loadFont("HiraginoSans-W0-10.vlw");
+  HIRAGINO_W0_20 = loadFont("HiraginoSans-W0-20.vlw");
+  HIRAGINO_W2_10 = loadFont("HiraginoSans-W2-10.vlw");
   shapeImage = loadImage("./tokyoLandShape.png");
   String[] datalines = loadStrings("../makeData/build/tokyoLandShape.csv");
   if (datalines != null) {

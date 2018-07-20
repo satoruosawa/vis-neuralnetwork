@@ -47,7 +47,7 @@ void drawAxis() {
   stroke(150);
   line(0, height / 2, width, height / 2);
   line(width / 2, 0, width / 2, height);
-  textFont(HIRAGINO20);
+  textFont(HIRAGINO_W0_20);
   textSize(20);
   fill(100);
   text("input0", width - 80, height / 2 - 5);
@@ -58,14 +58,14 @@ void drawLearningCount() {
   fill(255);
   noStroke();
   rect(10, 5, 100, 20);
-  textFont(HIRAGINO10);
+  textFont(HIRAGINO_W2_10);
   textSize(10);
   fill(0);
   text(LEARNING_COUNT, 10, 20);
 }
 
 void drawLearning() {
-  textFont(HIRAGINO20);
+  textFont(HIRAGINO_W0_20);
   textSize(20);
   fill(0);
   text("LEARNING", width / 2 - 50, height / 2 - 5);
