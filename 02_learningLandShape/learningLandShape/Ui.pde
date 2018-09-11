@@ -50,6 +50,7 @@ void drawAxis() {
   textFont(HIRAGINO_W0_20);
   textSize(20);
   fill(100);
+  textAlign(LEFT, BOTTOM);
   text("input0", width - 80, height / 2 - 5);
   text("input1", width / 2 + 5, 30);
 }
@@ -61,7 +62,10 @@ void drawLearningCount() {
   textFont(HIRAGINO_W2_10);
   textSize(10);
   fill(0);
-  text(LEARNING_COUNT, 10, 20);
+  textAlign(LEFT, BOTTOM);
+  text("Learning count", 10, 20);
+  textAlign(RIGHT, BOTTOM);
+  text(LEARNING_COUNT, 160, 20);
 }
 
 void drawLearning() {
