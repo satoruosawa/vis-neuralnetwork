@@ -48,7 +48,7 @@ void drawTrainingData() {
 }
 
 void update() {
-  if (!IS_LEARNING) { return; }
+  // if (!IS_LEARNING) { return; }
   for (int i = 0; i < 10000; i++) {
     int trainingIndex = int(random(TRAINING_DATA.size()));
     TrainingDatum td = TRAINING_DATA.get(trainingIndex);
@@ -58,44 +58,25 @@ void update() {
     NEURAL_NETWORK.learn(positionNormal[0], positionNormal[1], correctData);
     LEARNING_COUNT++;
   }
-  drawLearning();
+  // drawLearning();
   NEURAL_NETWORK.setValueToUi();
-
-  if (IS_LEARNING && LEARNING_COUNT == 100000) {
-    IS_LEARNING = false;
-    background(255);
-  } else if (IS_LEARNING && LEARNING_COUNT == 200000) {
-    IS_LEARNING = false;
-    background(255);
-  } else if (IS_LEARNING && LEARNING_COUNT == 500000) {
-    IS_LEARNING = false;
-    background(255);
-  } else if (IS_LEARNING && LEARNING_COUNT == 1000000) {
-    IS_LEARNING = false;
-    background(255);
-  } else if (IS_LEARNING && LEARNING_COUNT == 10000000) {
-    IS_LEARNING = false;
-    background(255);
-  } else if (IS_LEARNING && LEARNING_COUNT == 100000000) {
-    IS_LEARNING = false;
-    background(255);
-  }
 }
 
 void draw() {
+  background(255);
   update();
   drawLearningCount();
-  if (IS_LEARNING) { return; }
+  // if (IS_LEARNING) { return; }
   pushMatrix(); {
     translate(-MIN * SCALE, MAX * SCALE);
     noStroke();
-    for (int i = 0; i < 1000; i++) {
+    for (int i = 0; i < 500000; i++) {
       float input0 = random(MIN, MAX);
       float input1 = random(MIN, MAX);
       NEURAL_NETWORK.drawNeurons(input0, input1, 1);
     }
   } popMatrix();
-  tint(#0000FF, 3);
+  tint(#0000FF, 100);
   image(shapeImage, 0, 0);
   drawAxis();
   saveFrame("frames/######.tif");
