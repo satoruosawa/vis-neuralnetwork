@@ -27,12 +27,12 @@ class NeuralNetwork {
     }
     outputsN1[NUM_MIDDLE_LAYER] = bias1;
     float outputsN2 = neuron2.run(outputsN1);
-    // fill((1 - outputsN2) * 255);
-    if (outputsN2 > 0.5) {
-      fill(0);
-    } else {
-      fill(255);
-    }
+    fill(0, outputsN2 * 255);
+    // if (outputsN2 > 0.5) {
+    //   fill(0);
+    // } else {
+    //   fill(255);
+    // }
     rect(input0 * SCALE, input1 * SCALE, size, size);
   }
 
