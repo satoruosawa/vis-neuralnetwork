@@ -1,3 +1,6 @@
+import java.text.SimpleDateFormat;
+import java.util.*;
+
 PFont HIRAGINO_W0_10;
 PFont HIRAGINO_W0_20;
 PFont HIRAGINO_W2_10;
@@ -57,6 +60,26 @@ void update() {
   }
   drawLearning();
   NEURAL_NETWORK.setValueToUi();
+
+  if (IS_LEARNING && LEARNING_COUNT == 100000) {
+    IS_LEARNING = false;
+    background(255);
+  } else if (IS_LEARNING && LEARNING_COUNT == 200000) {
+    IS_LEARNING = false;
+    background(255);
+  } else if (IS_LEARNING && LEARNING_COUNT == 500000) {
+    IS_LEARNING = false;
+    background(255);
+  } else if (IS_LEARNING && LEARNING_COUNT == 1000000) {
+    IS_LEARNING = false;
+    background(255);
+  } else if (IS_LEARNING && LEARNING_COUNT == 10000000) {
+    IS_LEARNING = false;
+    background(255);
+  } else if (IS_LEARNING && LEARNING_COUNT == 100000000) {
+    IS_LEARNING = false;
+    background(255);
+  }
 }
 
 void draw() {
@@ -75,6 +98,7 @@ void draw() {
   tint(#0000FF, 3);
   image(shapeImage, 0, 0);
   drawAxis();
+  saveFrame("frames/######.tif");
 }
 
 void keyPressed() {
@@ -92,6 +116,10 @@ void keyPressed() {
         background(255);
       }
       break;
+    case 's':
+      Date date = new Date();
+      String dateString = new SimpleDateFormat("yyyyMMdd_hhmmss").format(date);
+      save(dateString + ".png");
     default:
       break;
   }
