@@ -9,7 +9,7 @@ NeuralNetwork NEURAL_NETWORK;
 float MAX = 1;
 float MIN = -1;
 float SCALE = 1;
-int NUM_MIDDLE_LAYER = 200;
+int NUM_MIDDLE_LAYER = 200;　// int NUM_MIDDLE_LAYER = 500;
 boolean IS_LEARNING = false;
 int LEARNING_COUNT = 0;
 PImage shapeImage;
