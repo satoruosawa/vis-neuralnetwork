@@ -3,7 +3,7 @@ import os
 import csv
 import random
 
-img = Image.open('tokyoLandShape.jpg')
+img = Image.open('landShape.jpg')
 width, height = img.size
 
 flag_array = []
@@ -15,9 +15,9 @@ flag_array = []
 for y in range(height):
   for x in range(width):
     if (img.getpixel((x, y))[0] < 128):
-      flag_array.append([x, y, 1]) # is Tokyo
+      flag_array.append([x, y, 1]) # is on the land
     else:
-      flag_array.append([x, y, 0]) # is not Tokyo
+      flag_array.append([x, y, 0]) # is not on the land
 
 def generateAll(writer, array):
   for y in range(height):
@@ -25,15 +25,10 @@ def generateAll(writer, array):
       i = x + y * width
       writer.writerow(array[i])
 
-def generateRandom(writer, array, rowNum):
-  for i in range(rowNum):
-      writer.writerow(array[random.randrange(height * width)])
-
 folder_path = 'build'
 if not os.path.exists(folder_path):
   os.mkdir(folder_path)
-f = open(folder_path + '/tokyoLandShape.csv', 'w')
+f = open(folder_path + '/landShape.csv', 'w')
 writer = csv.writer(f, lineterminator='\n')
 generateAll(writer, flag_array)
-# generateRandom(writer, flag_array, 1000)
 f.close()
